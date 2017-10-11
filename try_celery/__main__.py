@@ -3,7 +3,6 @@ import asyncio
 import os
 import sys
 import traceback
-from datetime import datetime
 
 from aiohttp import web
 
@@ -14,7 +13,7 @@ from . import tasks
 async def main(request):
     try:
         tasks.task_two.delay()
-        tasks.task_one.delay(start_time=datetime.now())
+        tasks.task_one.delay()
         print("tasks delayed")
         return web.Response(text="Hello", status=200)
     except Exception as exc:
