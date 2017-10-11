@@ -10,13 +10,14 @@ app.conf.update(BROKER_URL=os.environ['REDIS_URL'],
 
 
 @app.task
-def task_one(start_time):
-    print(f"This is task one, started at {start_time}")
+def task_one(start_time, source=None):
+    print(f"This is task one, started at {start_time}, source {source}")
+
 
 @app.task
 def task_two():
-    print("This is task two.")
-    # task_one.delay(start_time=datetime.now())
+    print("This is task two, now starting task one.")
+    task_one.delay(start_time=datetime.now(), source="task two")
 
 def util():
     print("Hey!")
