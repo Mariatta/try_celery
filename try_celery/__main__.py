@@ -14,7 +14,7 @@ async def main(request):
     try:
         tasks.task_two.delay()
         print("tasks delayed")
-        return web.Response(status=200)
+        return web.Response(text="Hello", status=200)
     except Exception as exc:
         traceback.print_exc(file=sys.stderr)
         return web.Response(status=500)
