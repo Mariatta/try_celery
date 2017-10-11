@@ -12,8 +12,9 @@ from . import tasks
 
 async def main(request):
     try:
-        chain = tasks.task_two.s() | tasks.task_one.s()
-        chain()
+        tasks.task_two.delay()
+        tasks.task_one.delay()
+        # chain()
         print("tasks delayed")
         return web.Response(text="Hello", status=200)
     except Exception as exc:
