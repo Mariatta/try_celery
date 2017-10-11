@@ -18,8 +18,8 @@ def task_one(source=None):
 def task_two():
     print("This is task two, now starting task one.")
     util()
+    return "task two kicked."
     # task_one.delay(start_time=datetime.now(), source="task two")
-    celery.current_app.send_task('try_celery.tasks.task_one', args=['task two'])
 
 
 def util():
