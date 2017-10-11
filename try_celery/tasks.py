@@ -16,7 +16,7 @@ def task_one(start_time):
 @app.task
 def task_two():
     print("This is task two.")
-    task_one.delay(start_time=datetime.now())
+    # task_one.delay(start_time=datetime.now())
 
 def util():
     print("Hey!")
